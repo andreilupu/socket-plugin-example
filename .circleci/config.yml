@@ -19,6 +19,7 @@ jobs:
         environment:
           MYSQL_DATABASE: testdb
           MYSQL_ROOT_PASSWORD: password
+    working_directory: /var/www/html
     steps:
       - run:
           name: Install System Packages
