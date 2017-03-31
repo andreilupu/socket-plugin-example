@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: php:5.2.17
+      - image: tommylau/php-5.2
         environment:
           APP_ENV: local
           APP_DEBUG: true
