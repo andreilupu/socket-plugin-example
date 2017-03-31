@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: php:7.0-apache
+        environment:
+          APP_ENV: local
+          APP_DEBUG: true
+          APP_KEY: kjcndjjksddwdwdw
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: testdb
+          DB_USERNAME: root
+          DB_PASSWORD: password
+          CACHE_DRIVER: memcached
+          QUEUE_DRIVER: sync
+      - image: mariadb:5.5
+        environment:
+          MYSQL_DATABASE: testdb
+          MYSQL_ROOT_PASSWORD: password
+    steps:
+      - run:
+          name: Install System Packages
+          command: apt-get update && apt-get -y install git unzip zlib1g-dev

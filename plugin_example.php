@@ -93,17 +93,32 @@ add_filter( 'socket_config_for_plugin_example', function ( $config ) {
 					),
 				)
 			),
+		)
+	);
+} );
 
+require_once( plugin_dir_path( __FILE__ ) . 'socket/loader.php' );
+
+$socket = new WP_Socket( 'plugin_example' );
+
+add_filter( 'socket_config_for_another_plugin', function ( $config ) {
+	return array(
+		'page_title'        => 'Another plugin',
+		'nav_label'   => 'A Plug',
+		'options_key' => 'another_plugin',
+		'sockets'     => array(
 			'grid_example3' => array(
 				'label' => 'Section Name 3',
 				'items' => array(
 					'acheckbox' => array(
 						'type'  => 'checkbox',
-						'label' => 'The cjeck'
+						'label' => 'The cjeck',
+						'default' => 1
 					),
 					'atoggle'   => array(
 						'type'  => 'toggle',
-						'label' => 'The ctogglejeck'
+						'label' => 'The ctogglejeck',
+						'default' => 1
 					),
 				)
 			),
@@ -124,7 +139,4 @@ add_filter( 'socket_config_for_plugin_example', function ( $config ) {
 		)
 	);
 } );
-
-require_once( plugin_dir_path( __FILE__ ) . 'socket/loader.php' );
-
-$socket = new WP_Socket( 'plugin_example' );
+$socket2 = new WP_Socket( 'another_plugin' );
